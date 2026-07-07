@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Tamizhan Abroad — Vlogs · Gaming · Tamil soul, US vibes</title>
+<meta name="description" content="Tamizhan Abroad — Tamil vlogs and gaming from the USA. Travel, tech & cars, PS5 Pro & VR streams, all in a Tamil + English blend.">
+<meta property="og:title" content="Tamizhan Abroad — Vlogs · Gaming · Tamil soul, US vibes">
+<meta property="og:description" content="Real, unfiltered Tamil vlogs and gaming from the USA. Two channels, one Tamizhan — subscribe pannunga! 🔔">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#C8551E">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ganesha",
+  "alternateName": "Tamizhan Abroad",
+  "description": "Tamil creator in the USA — travel vlogs and gaming content in a Tamil + English blend.",
+  "knowsLanguage": ["ta", "en"],
+  "sameAs": [
+    "https://www.youtube.com/@TamizhanAbroad",
+    "https://www.youtube.com/@TamizhanAbroadGaming",
+    "https://www.instagram.com/tamizhan__abroad/"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Archivo:wght@400;500;600;700;800&family=Catamaran:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Vlog mode (default): warm Texas sunset, from the vlog logo */
+    --bg:#F5E3BE;
+    --bg-2:#EFD8A9;
+    --surface:#FFF6E3;
+    --ink:#2E1E10;
+    --ink-soft:#5C4630;
+    --brand:#C8551E;          /* sunset orange */
+    --brand-2:#7A3B12;        /* saddle brown */
+    --accent:#31536B;         /* denim blue */
+    --chip:#E9CE9C;
+    --hero-glow:radial-gradient(circle at 50% 30%, rgba(200,85,30,.28), transparent 60%);
+    --ring:rgba(122,59,18,.35);
+    --shadow:rgba(70,40,10,.25);
+  }
+  body.gaming{
+    /* Gaming mode: night stream, RGB from the headset */
+    --bg:#0E1526;
+    --bg-2:#131C33;
+    --surface:#1A2440;
+    --ink:#EDF2FF;
+    --ink-soft:#A9B4CE;
+    --brand:#8B5CF6;          /* RGB violet */
+    --brand-2:#22D3EE;        /* RGB cyan */
+    --accent:#F59E0B;         /* temple gold */
+    --chip:#243154;
+    --hero-glow:radial-gradient(circle at 50% 30%, rgba(139,92,246,.30), transparent 60%);
+    --ring:rgba(139,92,246,.5);
+    --shadow:rgba(0,0,0,.5);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);
+    line-height:1.6;
+    transition:background .5s ease,color .5s ease;
+  }
+  .tamil{font-family:'Catamaran','Archivo',sans-serif}
+  img{display:block;max-width:100%;height:auto}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ring);
+    transition:background .5s ease;
+  }
+  .nav{
+    max-width:1160px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .wordmark{
+    font-family:'Fraunces',serif;font-variation-settings:'SOFT' 40,'WONK' 1;
+    font-weight:800;font-size:1.2rem;color:var(--ink);
+    text-decoration:none;white-space:nowrap;
+  }
+  .wordmark span{color:var(--brand)}
+  .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+  .nav-links a{
+    text-decoration:none;font-size:.82rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--brand)}
+  @media (max-width:760px){.nav-links{display:none}}
+
+  /* Mode toggle */
+  .mode-toggle{
+    display:flex;border:2px solid var(--ring);border-radius:999px;
+    overflow:hidden;background:var(--surface);
+  }
+  .mode-toggle button{
+    border:0;background:transparent;color:var(--ink-soft);
+    font:inherit;font-weight:700;font-size:.82rem;
+    padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;
+    transition:background .3s,color .3s;
+  }
+  .mode-toggle button[aria-pressed="true"]{background:var(--brand);color:#fff}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    max-width:1160px;margin:0 auto;
+    padding:64px 24px 56px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;background:var(--hero-glow);
+    pointer-events:none;transition:opacity .5s;
+  }
+  .hero>*{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brand);margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--brand)}
+  h1{
+    font-family:'Fraunces',serif;font-variation-settings:'SOFT' 60,'WONK' 1;
+    font-weight:850;font-size:clamp(2.5rem,5.4vw,4.2rem);
+    line-height:1.05;color:var(--ink);
+  }
+  h1 em{color:var(--brand);font-style:italic}
+  .hero .lead{margin-top:22px;font-size:1.08rem;max-width:34rem;color:var(--ink-soft)}
+  .hero .lead strong{color:var(--ink)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;border-radius:999px;
+    font-weight:800;font-size:.95rem;text-decoration:none;cursor:pointer;border:0;font-family:inherit;
+    transition:transform .15s ease,box-shadow .15s ease,background .3s,color .3s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-brand{background:var(--brand);color:#fff;box-shadow:0 8px 22px var(--shadow)}
+  .btn-outline{border:2px solid var(--ink);color:var(--ink);background:transparent}
+  .btn-outline:hover{background:var(--ink);color:var(--bg)}
+
+  .hero-art{justify-self:center;position:relative;width:min(380px,82vw)}
+  .hero-art .frame{
+    border-radius:28px;overflow:hidden;
+    border:4px solid var(--ink);
+    box-shadow:12px 12px 0 var(--brand);
+    transform:rotate(-1.5deg);
+    transition:box-shadow .5s,transform .3s;
+    background:var(--surface);
+  }
+  .hero-art:hover .frame{transform:rotate(0deg)}
+  .hero-art img{width:100%;height:auto;transition:opacity .35s}
+  .hero-art img.fading{opacity:0}
+  .live-chip{
+    position:absolute;top:-14px;right:-10px;
+    background:var(--ink);color:var(--bg);
+    font-weight:800;font-size:.78rem;letter-spacing:.06em;
+    padding:8px 14px;border-radius:999px;transform:rotate(3deg);
+    transition:background .5s,color .5s;
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
+    .eyebrow{justify-content:center}.eyebrow::before{display:none}
+    .cta-row{justify-content:center}
+    .hero .lead{margin-left:auto;margin-right:auto}
+  }
+
+  /* ---------- Ticker ---------- */
+  .ticker{
+    background:var(--ink);color:var(--bg);overflow:hidden;
+    transition:background .5s,color .5s;
+  }
+  .ticker-track{display:flex;width:max-content;animation:scroll 30s linear infinite}
+  .ticker-track p{
+    white-space:nowrap;padding:12px 0;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1rem;letter-spacing:.03em;
+  }
+  .ticker-track p span{margin:0 20px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- Sections ---------- */
+  section{padding:84px 24px}
+  .inner{max-width:1160px;margin:0 auto}
+  .section-head{max-width:660px;margin-bottom:44px}
+  h2{
+    font-family:'Fraunces',serif;font-variation-settings:'SOFT' 50,'WONK' 1;
+    font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);
+    color:var(--ink);line-height:1.12;
+  }
+  .section-head p{margin-top:12px;color:var(--ink-soft)}
+
+  /* Channels */
+  .channels{background:var(--bg-2);transition:background .5s}
+  .channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .channel{
+    background:var(--surface);border:2px solid var(--ring);border-radius:22px;
+    padding:30px;display:flex;flex-direction:column;gap:18px;
+    transition:transform .18s ease,box-shadow .18s ease,background .5s,border-color .5s;
+  }
+  .channel:hover{transform:translateY(-6px);box-shadow:0 18px 40px var(--shadow)}
+  .channel-top{display:flex;gap:18px;align-items:center}
+  .channel-top img{
+    width:92px;height:92px;object-fit:cover;border-radius:20px;
+    border:3px solid var(--ink);flex:none;
+  }
+  .channel h3{
+    font-family:'Fraunces',serif;font-weight:800;font-size:1.35rem;color:var(--ink);line-height:1.2;
+  }
+  .channel .handle{color:var(--brand);font-weight:700;font-size:.88rem}
+  .channel p{color:var(--ink-soft);font-size:.97rem}
+  .channel .tamil-line{font-weight:700;color:var(--ink)}
+  .channel .btn{align-self:flex-start;margin-top:auto}
+  @media (max-width:820px){.channel-grid{grid-template-columns:1fr}}
+
+  /* Pillars (tabbed) */
+  .tabs{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+  .tab{
+    border:2px solid var(--ring);background:var(--surface);color:var(--ink-soft);
+    font:inherit;font-weight:800;font-size:.9rem;
+    padding:10px 22px;border-radius:999px;cursor:pointer;
+    transition:background .25s,color .25s,border-color .25s;
+  }
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--surface);border:1px solid var(--ring);border-radius:18px;
+    padding:26px 24px;
+    transition:transform .15s ease,box-shadow .15s ease,background .5s,border-color .5s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px var(--shadow)}
+  .card .emoji{font-size:1.7rem}
+  .card h3{
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.12rem;
+    color:var(--ink);margin:12px 0 6px;
+  }
+  .card p{font-size:.94rem;color:var(--ink-soft)}
+  .panel{display:none}
+  .panel.active{display:block}
+  @media (max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}}
+
+  /* About */
+  .about{background:var(--bg-2);transition:background .5s}
+  .about-inner{
+    max-width:1000px;margin:0 auto;
+    display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;
+  }
+  .about-photo{
+    border-radius:999px 999px 20px 20px;overflow:hidden;
+    border:4px solid var(--ink);box-shadow:10px 10px 0 var(--accent);
+    transform:rotate(1.5deg);transition:transform .3s;
+  }
+  .about-photo:hover{transform:rotate(0)}
+  .about h2 .tamil{color:var(--brand)}
+  .about p{margin-top:14px;color:var(--ink-soft);max-width:42rem}
+  .about p strong{color:var(--ink)}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .tags span{
+    font-size:.8rem;font-weight:700;letter-spacing:.04em;
+    background:var(--chip);color:var(--ink);
+    padding:8px 15px;border-radius:999px;transition:background .5s,color .5s;
+  }
+  @media (max-width:780px){
+    .about-inner{grid-template-columns:1fr}
+    .about-photo{max-width:280px;margin:0 auto}
+    .about div:last-child{text-align:center}
+    .tags{justify-content:center}
+  }
+
+  /* Follow */
+  .follow{text-align:center}
+  .follow>.inner>p{max-width:38rem;margin:14px auto 0;color:var(--ink-soft)}
+  .follow-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:38px}
+  .social{
+    display:flex;align-items:center;gap:14px;text-decoration:none;
+    background:var(--surface);border:2px solid var(--ring);
+    padding:16px 24px;border-radius:16px;min-width:280px;text-align:left;
+    transition:transform .15s ease,border-color .2s,box-shadow .15s,background .5s;
+  }
+  .social:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:0 12px 28px var(--shadow)}
+  .social .icon{
+    width:46px;height:46px;border-radius:12px;flex:none;
+    display:grid;place-items:center;font-size:1.25rem;font-weight:800;color:#fff;
+  }
+  .yt .icon{background:#E23B31}
+  .ig .icon{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
+  .social b{display:block;color:var(--ink);font-size:.98rem}
+  .social small{color:var(--ink-soft);font-size:.82rem}
+
+  footer{
+    border-top:1px solid var(--ring);
+    padding:26px 24px;text-align:center;background:var(--bg-2);
+    transition:background .5s;
+  }
+  footer p{font-size:.85rem;color:var(--ink-soft)}
+  footer .hash{color:var(--brand);font-weight:700}
+
+  /* Skip link */
+  .skip-link{
+    position:fixed;top:-60px;left:16px;z-index:100;
+    background:var(--ink);color:var(--bg);font-weight:700;
+    padding:10px 18px;border-radius:0 0 12px 12px;text-decoration:none;
+    transition:top .2s;
+  }
+  .skip-link:focus{top:0}
+
+  header.elevated{box-shadow:0 6px 24px var(--shadow)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .nav-links a.active{color:var(--brand)}
+
+  /* Hamburger */
+  .hamburger{
+    display:none;flex-direction:column;gap:5px;
+    background:transparent;border:0;cursor:pointer;padding:8px;
+  }
+  .hamburger span{
+    width:24px;height:3px;border-radius:2px;background:var(--ink);
+    transition:transform .25s,opacity .25s;
+  }
+  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .mobile-menu{
+    display:flex;flex-direction:column;
+    border-top:1px solid var(--ring);background:var(--surface);
+  }
+  .mobile-menu a{
+    padding:15px 24px;text-decoration:none;color:var(--ink);
+    font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:.85rem;
+    border-bottom:1px solid var(--ring);
+  }
+  .mobile-menu a:active{background:var(--chip)}
+  @media (max-width:760px){.hamburger{display:flex}}
+  @media (min-width:761px){.mobile-menu{display:none !important}}
+
+  /* Toast */
+  #toast{
+    position:fixed;bottom:90px;left:50%;transform:translate(-50%,20px);
+    background:var(--ink);color:var(--bg);font-weight:700;font-size:.9rem;
+    padding:12px 22px;border-radius:999px;z-index:90;
+    opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+    box-shadow:0 10px 30px var(--shadow);white-space:nowrap;
+  }
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+
+  .ticker:hover .ticker-track{animation-play-state:paused}
+
+  /* Featured video */
+  .video-wrap{
+    position:relative;width:100%;max-width:900px;margin:0 auto;
+    aspect-ratio:16/9;border-radius:22px;overflow:hidden;
+    border:3px solid var(--ink);box-shadow:12px 12px 0 var(--brand);
+  }
+  .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-fallback{text-align:center;margin-top:16px;font-size:.9rem;color:var(--ink-soft)}
+  .video-fallback a{color:var(--brand);font-weight:700}
+
+  /* Share / collab */
+  .share-row{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .collab{font-size:.92rem;color:var(--ink-soft)}
+  .collab a{color:var(--brand);font-weight:700}
+
+  /* Back to top */
+  #toTop{
+    position:fixed;bottom:24px;right:24px;z-index:70;
+    width:52px;height:52px;border-radius:50%;border:2px solid var(--ink);
+    background:var(--brand);font-size:1.4rem;cursor:pointer;
+    box-shadow:0 10px 24px var(--shadow);
+    opacity:0;pointer-events:none;transform:translateY(12px);
+    transition:opacity .3s,transform .3s,background .5s;
+  }
+  #toTop.show{opacity:1;pointer-events:auto;transform:none}
+  #toTop:hover{transform:translateY(-3px)}
+
+  /* Hero rotating word */
+  #rotator{display:inline-block;min-width:4.2ch}
+  #rotator.swap{animation:wordIn .45s ease}
+  @keyframes wordIn{
+    0%{opacity:0;transform:translateY(.35em) rotate(-2deg)}
+    100%{opacity:1;transform:none}
+  }
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .ticker-track{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn:hover,.channel:hover,.card:hover,.social:hover,#toTop:hover{transform:none}
+    body,.ticker,header{transition:none}
+    #rotator.swap{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<header id="siteHeader">
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="#top">TAMIZHAN <span>ABROAD</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#channels">Channels</a></li>
+      <li><a href="#watch">What you'll see</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#follow">Follow</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="mode-toggle" role="group" aria-label="Site mode">
+        <button id="btnVlog" aria-pressed="true" onclick="setMode('vlog')">🤠 Vlog</button>
+        <button id="btnGaming" aria-pressed="false" onclick="setMode('gaming')">🎮 Gaming</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="#channels" onclick="toggleMenu()">Channels</a>
+    <a href="#watch" onclick="toggleMenu()">What you'll see</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#follow" onclick="toggleMenu()">Follow</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero" style="padding-top:64px">
+    <div>
+      <p class="eyebrow tamil" id="heroEyebrow">தமிழன் • Tamil Creator in the USA</p>
+      <h1 id="heroTitle"><span class="tamil">வணக்கம்,</span> <em id="rotator">y'all.</em></h1>
+      <p class="lead" id="heroLead">
+        I speak the <strong>oldest language in the world</strong> — and I'm living the American road-trip dream.
+        Real, unfiltered Tamil vlogs from the USA: travel, tech &amp; cars, food, and culture shocks. 🤯
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-brand" id="heroCta" href="https://www.youtube.com/@TamizhanAbroad" target="_blank" rel="noopener">▶ Subscribe — Tamizhan Abroad</a>
+        <a class="btn btn-outline" href="https://www.instagram.com/tamizhan__abroad/" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="frame">
+        <img id="heroImg" src="assets/vlog-logo.jpg" alt="Tamizhan Abroad vlog logo — cartoon of Ganesha in a cowboy hat holding an action camera" width="420" height="420">
+      </div>
+      <p class="live-chip" id="heroChip">ON THE ROAD 🚙</p>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack">
+      <p id="tickerA"></p>
+      <p id="tickerB"></p>
+    </div>
+  </div>
+
+  <!-- Channels -->
+  <section class="channels" id="channels">
+    <div class="inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">Two channels, one Tamizhan</p>
+        <h2>Pick your adventure</h2>
+        <p>Vlogs for the wanderers, gaming for the night owls — always in a Tamil + English blend. 😎</p>
+      </div>
+      <div class="channel-grid">
+        <article class="channel reveal">
+          <div class="channel-top">
+            <img src="assets/vlog-logo.jpg" alt="Tamizhan Abroad vlog channel logo">
+            <div>
+              <h3>Tamizhan Abroad</h3>
+              <p class="handle">@TamizhanAbroad · Vlogs</p>
+            </div>
+          </div>
+          <p>
+            The real, unfiltered life of a Tamil guy in the USA 🇺🇸 — honest travel stories &amp; hacks ✈️,
+            US life, career &amp; student experiences 🎓, Tesla &amp; Cybertruck reviews ⚡, food explorations 🍔,
+            and funny adventures with Americans 😆.
+          </p>
+          <p class="tamil-line tamil">Tamil + English blend, US vibes, desi soul. 💥</p>
+          <a class="btn btn-brand" href="https://www.youtube.com/@TamizhanAbroad" target="_blank" rel="noopener">▶ Watch vlogs</a>
+        </article>
+        <article class="channel reveal">
+          <div class="channel-top">
+            <img src="assets/gaming-logo.jpg" alt="Tamizhan Abroad Gaming channel logo — cartoon of Ganesha with an RGB headset and controller">
+            <div>
+              <h3>Tamizhan Abroad Gaming</h3>
+              <p class="handle">@TamizhanAbroadGaming · Live streams</p>
+            </div>
+          </div>
+          <p>
+            Tamil gaming content from a Tamizhan living abroad 🎮 — live streams on PS5 Pro, PC and VR
+            (Meta Quest 3) 🕹️, first-person reactions, no scripts, just real gameplay 🎯.
+            New streams every week. 📅
+          </p>
+          <p class="tamil-line tamil">Ungalukku pidichirundha, subscribe pannunga! 🔔</p>
+          <a class="btn btn-brand" href="https://www.youtube.com/@TamizhanAbroadGaming" target="_blank" rel="noopener">▶ Join a stream</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured video (auto-hides until a video ID is set in CONFIG below) -->
+  <section id="featured" hidden>
+    <div class="inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">Now playing</p>
+        <h2 id="featuredTitle">Featured video</h2>
+      </div>
+      <div class="video-wrap reveal">
+        <iframe id="featuredFrame" src="" title="Featured YouTube video"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest videos — auto-updates from your uploads playlist (set channelId in CONFIG) -->
+  <section id="latest" hidden>
+    <div class="inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">Fresh uploads</p>
+        <h2 id="latestTitle">Latest videos</h2>
+        <p>Newest uploads appear here automatically — no site updates needed. 🔄</p>
+      </div>
+      <div class="video-wrap reveal">
+        <iframe id="latestFrame" src="" title="Latest YouTube uploads"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+      <p class="video-fallback reveal">Player not loading? <a id="latestExternal" href="https://www.youtube.com/@TamizhanAbroad/videos" target="_blank" rel="noopener">Watch directly on YouTube ↗</a></p>
+    </div>
+  </section>
+
+  <!-- Instagram feed — paste a widget embed code (Behold / SnapWidget / LightWidget)
+       inside the div below, then remove the `hidden` attribute from the <section>. -->
+  <section id="insta" hidden>
+    <div class="inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">On the gram</p>
+        <h2>Latest from Instagram</h2>
+      </div>
+      <div id="instagramFeed" class="reveal">
+        <!-- PASTE YOUR INSTAGRAM WIDGET EMBED CODE HERE -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section id="watch">
+    <div class="inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">On the channels</p>
+        <h2>What you'll see</h2>
+      </div>
+      <div class="tabs reveal" role="tablist" aria-label="Channel content">
+        <button class="tab" id="tabVlog" role="tab" aria-selected="true" onclick="setTab('vlog')">🤠 Vlogs</button>
+        <button class="tab" id="tabGaming" role="tab" aria-selected="false" onclick="setTab('gaming')">🎮 Gaming</button>
+      </div>
+
+      <div class="panel active" id="panelVlog" role="tabpanel">
+        <div class="grid">
+          <div class="card reveal"><div class="emoji">✈️🗺️</div><h3>Honest travel stories &amp; hacks</h3><p>Real travel vlogs from across the USA and beyond — what works, what doesn't, and what nobody tells you.</p></div>
+          <div class="card reveal"><div class="emoji">🎓💼</div><h3>US life, career &amp; student experiences</h3><p>The unfiltered truth about studying, working, and building a life in America as a Tamizhan.</p></div>
+          <div class="card reveal"><div class="emoji">🚙🔋</div><h3>Tech, cars &amp; road trips</h3><p>From Tesla and Cybertruck to gadgets and long highway miles across Texas and beyond.</p></div>
+          <div class="card reveal"><div class="emoji">🍲💪</div><h3>Food, fitness &amp; lifestyle</h3><p>Food explorations, fitness, and everyday lifestyle — desi kitchen to American diners.</p></div>
+          <div class="card reveal"><div class="emoji">👫🇺🇸</div><h3>Culture mashups</h3><p>Culture shocks 🤯, language moments, and funny adventures with Americans.</p></div>
+          <div class="card reveal"><div class="emoji">🌟</div><h3>Motivation for Tamils abroad</h3><p>Heartfelt advice and tips for our Tamil community living, studying, and dreaming overseas.</p></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panelGaming" role="tabpanel">
+        <div class="grid">
+          <div class="card reveal in"><div class="emoji">🕹️</div><h3>Live streams — PS5 Pro, PC &amp; VR</h3><p>Weekly live streams across PS5 Pro, PC, and Meta Quest 3 VR — come chat in Tamil while I play.</p></div>
+          <div class="card reveal in"><div class="emoji">🎯</div><h3>No scripts, just real gameplay</h3><p>First-person reactions the moment they happen — wins, fails, rage, and clutch moments.</p></div>
+          <div class="card reveal in"><div class="emoji">🌍</div><h3>A Tamil voice from outside Tamil Nadu</h3><p>Tamil gaming commentary from abroad — a different lens on the games you love.</p></div>
+          <div class="card reveal in"><div class="emoji">🥽</div><h3>VR adventures</h3><p>Meta Quest 3 experiments, immersive gameplay, and the future of gaming — explained in Tamil.</p></div>
+          <div class="card reveal in"><div class="emoji">💬</div><h3>Live chat &amp; community</h3><p>Tamil gamers from India, the US, and everywhere else — hang out, chat live, and build this together.</p></div>
+          <div class="card reveal in"><div class="emoji">🔔</div><h3>New streams every week</h3><p>Subscribe and turn on notifications so you never miss a stream. Ungalukku pidichirundha, subscribe pannunga!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-photo reveal">
+        <img src="assets/ganesha.jpg" alt="Ganesha smiling in a tan cowboy hat and navy NASH tee" width="560" height="751">
+      </div>
+      <div class="reveal">
+        <h2><span class="tamil">வணக்கம்!</span> I'm Ganesha 🙏</h2>
+        <p>
+          A proud Tamizhan 🇮🇳 journeying beyond borders — sharing the real, unfiltered life of a Tamil guy
+          in the USA and around the world. <strong>TN born, TX living.</strong> Gamer, car buff, nature
+          enthusiast, adrenaline addict ✨
+        </p>
+        <p>
+          Whether it's a road trip through Texas or a late-night PS5 stream, it's always the same promise:
+          Tamil + English blend, full-on US vibes, desi soul. Let's show the world how Tamizhans rock,
+          wherever we go! 💥🌏
+        </p>
+        <div class="tags">
+          <span>🇮🇳 TN born</span><span>🤠 TX living</span><span>🎮 PS5 Pro + VR</span>
+          <span>🚗 Car buff</span><span>🌲 Nature enthusiast</span><span>⚡ Adrenaline addict</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Follow -->
+  <section class="follow" id="follow">
+    <div class="inner">
+      <div class="reveal">
+        <h2>Join the Tamizhan Abroad family</h2>
+        <p>Subscribe, follow, and be part of the journey — new vlogs, shorts, and streams every week.</p>
+      </div>
+      <div class="follow-links">
+        <a class="social yt reveal" href="https://www.youtube.com/@TamizhanAbroad" target="_blank" rel="noopener">
+          <span class="icon">▶</span>
+          <span><b>Tamizhan Abroad</b><small>YouTube · Vlogs</small></span>
+        </a>
+        <a class="social yt reveal" href="https://www.youtube.com/@TamizhanAbroadGaming" target="_blank" rel="noopener">
+          <span class="icon">🎮</span>
+          <span><b>Tamizhan Abroad Gaming</b><small>YouTube · Live streams</small></span>
+        </a>
+        <a class="social ig reveal" href="https://www.instagram.com/tamizhan__abroad/" target="_blank" rel="noopener">
+          <span class="icon">◎</span>
+          <span><b>@tamizhan__abroad</b><small>Instagram · Behind the scenes</small></span>
+        </a>
+      </div>
+      <div class="share-row reveal">
+        <button class="btn btn-outline" id="shareBtn" onclick="sharePage()">🔗 Share this page</button>
+        <p class="collab">For collabs &amp; business — DM <a href="https://www.instagram.com/tamizhan__abroad/" target="_blank" rel="noopener">@tamizhan__abroad</a> on Instagram 🤝</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<button id="toTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">🤠</button>
+
+<footer>
+  <p>© 2026 Tamizhan Abroad · <span class="hash">#TamizhanAbroad #TamilVlogger #TamilGaming #LifeInUSA</span></p>
+</footer>
+
+<script>
+  /* ============================================================
+     EASY CONFIG — everything auto-content lives here.
+
+     1) channelId: paste each YouTube channel ID (starts with "UC").
+        Find it: YouTube -> your channel -> ...more -> Share channel
+        -> Copy channel ID. Once set, the "Latest videos" section
+        shows your uploads playlist and UPDATES AUTOMATICALLY
+        whenever you upload — no site edits ever again.
+
+     2) featuredVideo: paste a single video ID (the part after v=)
+        to pin one video per mode. Leave "" to hide.
+
+     3) Instagram: search the page for "instagramFeed", paste a
+        widget embed code from behold.so / snapwidget.com there,
+        and remove `hidden` from that <section>.
+     ============================================================ */
+  const CONFIG = {
+    channelId: {
+      vlog:   "UCeQxGPLYb73A8Q8o3rinAfw",   // @TamizhanAbroad
+      gaming: "UCYy3FFahN7iOtDvzpqYFp9A"    // @TamizhanAbroadGaming
+    },
+    featuredVideo: {
+      vlog:   "",   // e.g. your best travel vlog
+      gaming: ""    // e.g. your latest stream highlight
+    }
+  };
+
+  const VLOG_IMG = "assets/vlog-logo.jpg";
+  const GAMING_IMG = "assets/gaming-logo.jpg";
+
+  const content = {
+    vlog: {
+      eyebrow: "தமிழன் • Tamil Creator in the USA",
+      title: '<span class="tamil">வணக்கம்,</span> <em>y\'all.</em>',
+      lead: 'I speak the <strong>oldest language in the world</strong> — and I\'m living the American road-trip dream. Real, unfiltered Tamil vlogs from the USA: travel, tech &amp; cars, food, and culture shocks. 🤯',
+      cta: "▶ Subscribe — Tamizhan Abroad",
+      ctaHref: "https://www.youtube.com/@TamizhanAbroad",
+      chip: "ON THE ROAD 🚙",
+      img: VLOG_IMG,
+      imgAlt: "Tamizhan Abroad vlog logo — cartoon of Ganesha in a cowboy hat holding an action camera",
+      ticker: '<span>வணக்கம்</span>·<span>HOWDY 🤠</span>·<span>ROAD TRIPS 🚙</span>·<span>சாப்பாடு 🍔</span>·<span>TESLA &amp; CYBERTRUCK ⚡</span>·<span>CULTURE SHOCKS 🤯</span>·<span>TRAVEL HACKS ✈️</span>·<span>தமிழ் + ENGLISH</span>·'
+    },
+    gaming: {
+      eyebrow: "தமிழ் Gaming • Live from abroad",
+      title: '<span class="tamil">வணக்கம்,</span> <em>gamers.</em> 🎮',
+      lead: 'Tamil gaming from a Tamizhan living abroad — <strong>live streams on PS5 Pro, PC and Meta Quest 3 VR</strong>. First-person reactions, no scripts, just real gameplay. New streams every week. 🔔',
+      cta: "▶ Subscribe — Tamizhan Abroad Gaming",
+      ctaHref: "https://www.youtube.com/@TamizhanAbroadGaming",
+      chip: "🔴 LIVE VIBES",
+      img: GAMING_IMG,
+      imgAlt: "Tamizhan Abroad Gaming logo — cartoon of Ganesha with an RGB headset holding a controller",
+      ticker: '<span>வணக்கம் GAMERS</span>·<span>PS5 PRO 🕹️</span>·<span>META QUEST 3 🥽</span>·<span>LIVE STREAMS 🔴</span>·<span>NO SCRIPTS 🎯</span>·<span>தமிழ் COMMENTARY</span>·<span>SUBSCRIBE PANNUNGA 🔔</span>·<span>GG DA! 😎</span>·'
+    }
+  };
+
+  function setMode(mode){
+    const c = content[mode];
+    document.body.classList.toggle('gaming', mode === 'gaming');
+    document.getElementById('btnVlog').setAttribute('aria-pressed', mode === 'vlog');
+    document.getElementById('btnGaming').setAttribute('aria-pressed', mode === 'gaming');
+
+    document.getElementById('heroEyebrow').textContent = c.eyebrow;
+    document.getElementById('heroTitle').innerHTML = c.title;
+    document.getElementById('heroLead').innerHTML = c.lead;
+    const cta = document.getElementById('heroCta');
+    cta.textContent = c.cta; cta.href = c.ctaHref;
+    document.getElementById('heroChip').textContent = c.chip;
+    document.getElementById('tickerA').innerHTML = c.ticker;
+    document.getElementById('tickerB').innerHTML = c.ticker;
+
+    const img = document.getElementById('heroImg');
+    img.classList.add('fading');
+    setTimeout(() => { img.src = c.img; img.alt = c.imgAlt; img.classList.remove('fading'); }, 300);
+
+    updateFeatured(mode);
+    updateLatest(mode);
+    startRotator(mode);
+    setTab(mode);
+  }
+
+  /* Latest videos — embeds the channel's uploads playlist (auto-updates).
+     YouTube trick: replace "UC" with "UU" in a channel ID to get its uploads playlist. */
+  function updateLatest(mode){
+    const id = (CONFIG.channelId[mode] || "").trim();
+    const sec = document.getElementById('latest');
+    const frame = document.getElementById('latestFrame');
+    if (id.startsWith('UC') && id.length > 10){
+      sec.hidden = false;
+      frame.src = "https://www.youtube.com/embed/videoseries?list=UU" + id.slice(2);
+      document.getElementById('latestTitle').textContent =
+        mode === 'gaming' ? "Latest streams & gameplay 🎮" : "Latest vlogs 🤠";
+      document.getElementById('latestExternal').href =
+        mode === 'gaming'
+          ? "https://www.youtube.com/@TamizhanAbroadGaming/videos"
+          : "https://www.youtube.com/@TamizhanAbroad/videos";
+    } else {
+      sec.hidden = true;
+      frame.src = "";
+    }
+  }
+
+  /* Featured video (auto-hides when no ID is configured) */
+  function updateFeatured(mode){
+    const id = (CONFIG.featuredVideo[mode] || "").trim();
+    const sec = document.getElementById('featured');
+    const frame = document.getElementById('featuredFrame');
+    if (id){
+      sec.hidden = false;
+      frame.src = "https://www.youtube.com/embed/" + id;
+      document.getElementById('featuredTitle').textContent =
+        mode === 'gaming' ? "Latest stream highlight 🎮" : "Featured vlog 🤠";
+    } else {
+      sec.hidden = true;
+      frame.src = "";
+    }
+  }
+
+  /* Rotating hero greeting */
+  const rotatorWords = {
+    vlog:   ["y'all.", "makkale!", "nanba!", "friends!"],
+    gaming: ["gamers. 🎮", "nanba! 🕹️", "team! 🔥", "makkale!"]
+  };
+  let rotTimer = null, rotIdx = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function startRotator(mode){
+    clearInterval(rotTimer); rotIdx = 0;
+    const el = document.getElementById('rotator');
+    el.textContent = rotatorWords[mode][0];
+    if (reduceMotion) return;
+    rotTimer = setInterval(() => {
+      rotIdx = (rotIdx + 1) % rotatorWords[mode].length;
+      el.classList.remove('swap'); void el.offsetWidth;
+      el.textContent = rotatorWords[mode][rotIdx];
+      el.classList.add('swap');
+    }, 2600);
+  }
+
+  /* Toast */
+  let toastTimer = null;
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  /* Share button */
+  function sharePage(){
+    const data = { title: document.title, text: "Check out Tamizhan Abroad! 🤠🎮", url: location.href };
+    if (navigator.share){ navigator.share(data).catch(()=>{}); }
+    else if (navigator.clipboard){
+      navigator.clipboard.writeText(location.href)
+        .then(() => showToast("✅ Link copied — share it, makkale!"))
+        .catch(() => showToast("Couldn't copy — long-press the address bar instead"));
+    }
+  }
+
+  /* Mobile menu */
+  function toggleMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    const open = menu.hidden;
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  /* Back to top + header elevation + scrollspy */
+  const toTop = document.getElementById('toTop');
+  const headerEl = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('show', window.scrollY > 500);
+    headerEl.classList.toggle('elevated', window.scrollY > 10);
+  }, { passive: true });
+
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        document.querySelectorAll('.nav-links a').forEach(a =>
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  ['channels','watch','about','follow'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
+  /* Keyboard navigation for tabs (ARIA pattern) */
+  document.querySelector('.tabs').addEventListener('keydown', e => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const next = document.activeElement === document.getElementById('tabVlog') ? 'gaming' : 'vlog';
+    setTab(next);
+    document.getElementById(next === 'vlog' ? 'tabVlog' : 'tabGaming').focus();
+  });
+
+  /* Defensive image fallback: if any embedded image fails, show a branded placeholder */
+  document.querySelectorAll('img').forEach(img => {
+    img.decoding = 'async';
+    img.addEventListener('error', () => {
+      const c = document.createElement('canvas');
+      c.width = 420; c.height = 420;
+      const x = c.getContext('2d');
+      x.fillStyle = getComputedStyle(document.body).getPropertyValue('--brand') || '#C8551E';
+      x.fillRect(0,0,420,420);
+      x.fillStyle = '#fff';
+      x.font = '800 120px Archivo, sans-serif';
+      x.textAlign = 'center'; x.textBaseline = 'middle';
+      x.fillText('TA', 210, 210);
+      img.src = c.toDataURL();
+    }, { once: true });
+  });
+
+  function setTab(tab){
+    document.getElementById('tabVlog').setAttribute('aria-selected', tab === 'vlog');
+    document.getElementById('tabGaming').setAttribute('aria-selected', tab === 'gaming');
+    document.getElementById('panelVlog').classList.toggle('active', tab === 'vlog');
+    document.getElementById('panelGaming').classList.toggle('active', tab === 'gaming');
+  }
+
+  // init
+  document.getElementById('tickerA').innerHTML = content.vlog.ticker;
+  document.getElementById('tickerB').innerHTML = content.vlog.ticker;
+  updateFeatured('vlog');
+  updateLatest('vlog');
+  startRotator('vlog');
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
